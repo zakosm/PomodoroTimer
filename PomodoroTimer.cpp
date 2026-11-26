@@ -1,13 +1,26 @@
 // PomodoroTimer.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+#include <string>
 #include <iostream>
 #include <thread>
 #include <chrono>
 
-int main()
-{
-    int secondsLeft = 5;
+int main(int argc, char* argv[]){
+
+    int number;
+
+    std::cout << "Enter a number: ";
+    
+    if (!(std::cin >> number)) {
+		// c++ is dumb, this means, do the assigemnt anyways and if does not work, then do the code in the if statement
+        std::cerr << "Invalid input! Please enter a number.\n";
+        return 1;
+    }
+
+    std::cout << "Timer starts now" << "\n";
+    
+    int secondsLeft = number;
 
     while (secondsLeft > 0) {
         // Display time
