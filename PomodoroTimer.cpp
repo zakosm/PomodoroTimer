@@ -6,7 +6,12 @@
 #include <thread>
 #include <chrono>
 
+void clearConsole() {
+    std::cout << "\033[2J\033[1;1H";
+}
 int main(int argc, char* argv[]){
+
+    
 
 	bool play = true;
     
@@ -27,6 +32,7 @@ int main(int argc, char* argv[]){
 
         while (secondsLeft > 0) {
             // Display time
+            clearConsole();
             std::cout << "Time left: " << secondsLeft << " seconds\n";
             //minus 1 from the time
             --secondsLeft;
