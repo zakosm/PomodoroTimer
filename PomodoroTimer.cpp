@@ -1,6 +1,6 @@
 // PomodoroTimer.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+#include <conio.h>
 #include <string>
 #include <iostream>
 #include <thread>
@@ -41,9 +41,8 @@ int main(int argc, char* argv[]){
         }
         std::cout << "Time is up!\n";
 
-        std::cout << "Do you want to play again? (y/n): ";
-        char choice;
-        std::cin >> choice;
+        std::cout << "Do you want to play again? (y/n): " << std::flush;
+        int choice = _getch();
         if (choice != 'y' && choice != 'Y') {
             play = false;
         }
