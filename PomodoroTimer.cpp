@@ -8,31 +8,42 @@
 
 int main(int argc, char* argv[]){
 
-    int number;
-
-    std::cout << "Enter a number: ";
+	bool play = true;
     
-    if (!(std::cin >> number)) {
-		// c++ is dumb, this means, do the assigemnt anyways and if does not work, then do the code in the if statement
-        std::cerr << "Invalid input! Please enter a number.\n";
-        return 1;
+    while (play) {
+        int number;
+
+        std::cout << "Welcome to the Pomodoro Timer!\n";
+        std::cout << "Enter a time in seconds: ";
+
+        if (!(std::cin >> number)) {
+            // c++ is dumb, this means, do the assigemnt anyways and if does not work, then do the code in the if statement
+            std::cerr << "Invalid input! Please enter a number.\n";
+            return 1;
+        }
+
+        std::cout << "Timer starts now" << "\n";
+        int secondsLeft = number;
+
+        while (secondsLeft > 0) {
+            // Display time
+            std::cout << "Time left: " << secondsLeft << " seconds\n";
+            //minus 1 from the time
+            --secondsLeft;
+            // Wait for 1 secon
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
+        std::cout << "Time is up!\n";
+
+        std::cout << "Do you want to play again? (y/n): ";
+        char choice;
+        std::cin >> choice;
+        if (choice != 'y' && choice != 'Y') {
+            play = false;
+        }
     }
 
-    std::cout << "Timer starts now" << "\n";
-    
-    int secondsLeft = number;
-
-    while (secondsLeft > 0) {
-        // Display time
-        std::cout << "Time left: " << secondsLeft << " seconds\n";
-        //minus 1 from the time
-        --secondsLeft;
-        // Wait for 1 secon
-		std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
-    std::cout << "Time is up!\n";
 }
-
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
 
